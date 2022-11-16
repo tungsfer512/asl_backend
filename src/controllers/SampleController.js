@@ -63,9 +63,11 @@ const deleteSampleById = async (req, res) => {
 // Update
 const updateSampleById = async (req, res) => {
     try {
+        console.log(123);
         let newSampleData = req.body;
         await Sample.update(
             {
+                status: newSampleData.status,
                 description: newSampleData.description
             },
             {
@@ -95,11 +97,13 @@ const updateSampleById = async (req, res) => {
 };
 const updateAllSample = async (req, res) => {
     try {
+        console.log(123);
         await Sample.update(
             {
                 status: 'trained'
             },
             {
+                where: {},
                 raw: true
             }
         );
